@@ -4,13 +4,13 @@ filename = 'betalinger.pk'
 
 fodboldtur ={}
 
-def afslut():
-    outfile = open(filename, 'wb')
-    pickle.dump(fodboldtur, outfile)
-    outfile.close()
+def afslut(): #giver afslut en funktion som man kan køre i koden
+    outfile = open(filename, 'wb') #python åbner filen
+    pickle.dump(fodboldtur, outfile) #python gemmer filen
+    outfile.close() #python lukker filen
     print("Programmet er afsluttet!")
 
-def printliste():
+def printliste(): #giver print liste en funktion som gør det nemmere at bruge deti koden
     for item in fodboldtur.items():
         print(item)
 
@@ -113,8 +113,10 @@ def menu(): #definerer menuen så jeg kan køre den altid Vha menu()
         else:
             menu()
 
-    #if (valg =='8'):
-
+    if (valg =='8'):
+        from operator import itemgetter #python importere "itemgetter" fra operator som er den sorterede dict
+        sidsteplads = sorted(fodboldtur.items(), key=itemgetter(1)) #giver "sidsteplads" en defination som jeg kan kalde når det skal printes.
+        print(sidsteplads[0:3])#printer "sidsteplads" fra tal 0-3 som er de 3 der mangler at betale mest.
 
 infile = open(filename,'rb')
 fodboldtur = pickle.load(infile)
