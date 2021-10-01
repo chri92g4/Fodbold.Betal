@@ -31,8 +31,16 @@ def menu(): #definerer menuen så jeg kan køre den altid Vha menu()
 
     if (valg == '1'): #jeg laver et "if" statement for hver valg som checker hvad bruger input er.
         printliste() #printer altid dicten som det første men har valgt at kalde den liste da flere vil forstå det
-        menu()
 
+        Valg = input("vil du åbne menuen igen?")  # derefter spørger jeg om brugeren vil åbne menuen igen så personen kan gøre andre ting, plus dette gør det nemmere for brugeren at se listen når den er printet
+        if Valg == 'ja':
+            menu()
+        else:
+            Valg = input("vil du lukke programmet?")  # derefter spørger jeg om brugeren vil lukke programmet eller fortsætte med andre funktioner.
+            if Valg == 'ja':
+                afslut()
+            else:
+                menu()
 
     if (valg =='2'):
         print("Hvilket beløb skal redigeres?")
@@ -117,6 +125,13 @@ def menu(): #definerer menuen så jeg kan køre den altid Vha menu()
         from operator import itemgetter #python importere "itemgetter" fra operator som er den sorterede dict
         sidsteplads = sorted(fodboldtur.items(), key=itemgetter(1)) #giver "sidsteplads" en defination som jeg kan kalde når det skal printes.
         print(sidsteplads[0:3])#printer "sidsteplads" fra tal 0-3 som er de 3 der mangler at betale mest.
+
+        Valg = input("vil du lukke programmet?")  # derefter spørger jeg om brugeren vil lukke programmet eller fortsætte med andre funktioner.
+        if Valg == 'ja':
+            afslut()
+        else:
+            menu()
+
 
 infile = open(filename,'rb')
 fodboldtur = pickle.load(infile)
